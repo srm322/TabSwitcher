@@ -1,5 +1,5 @@
 # chrome too damn big
-./chrome/*
+chrome/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
