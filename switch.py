@@ -47,16 +47,16 @@ def main():
 
     try:
         while True:
-            # Wait for 3 minutes
-            # time.sleep(180)
-            time.sleep(10)
+            # Wait for ~100 seconds
+            time.sleep(100)
+            # time.sleep(10)
             
             # Switch to the other tab
             driver.switch_to.window(driver.window_handles[1])
 
-            # Wait for 3 minutes
-            # time.sleep(180)
-            time.sleep(10)
+            # Wait for ~100 seconds
+            time.sleep(100)
+            # time.sleep(10)
 
             # Switch to the other tab
             driver.switch_to.window(driver.window_handles[0])
