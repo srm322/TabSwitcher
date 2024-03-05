@@ -66,8 +66,9 @@ def main():
     #     driver.quit()
     
     while True:{
-        
+        driver.wait(82800)
     }
+    driver.quit()
 
 if __name__ == "__main__":
     main()
