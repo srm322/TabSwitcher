@@ -58,8 +58,7 @@ def main():
             # driver.switch_to.window(driver.window_handles[1])
 
             # Wait for ~100 seconds 
-            # time.sleep(100)
-            driver.wait(82800)
+            time.sleep(82800)
 
             # # Switch to the other tab
             # driver.switch_to.window(driver.window_handles[0])
