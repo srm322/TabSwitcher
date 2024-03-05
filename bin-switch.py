@@ -34,7 +34,7 @@ def main():
     driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
 
     #stahp the darn refresh PLZ
-    driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': True})
+    # driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': True})
     
     # Create New Tab
     # new_tab_link = "https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=pickleballdisplay#scrollHere"
@@ -52,13 +52,15 @@ def main():
         while True:
             # Wait for ~100 seconds
             # time.sleep(100)
-            # # time.sleep(10)
+            time.sleep(8000)
+            driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': True})
             
             # # Switch to the other tab
             # driver.switch_to.window(driver.window_handles[1])
 
             # Wait for ~100 seconds 
-            time.sleep(82800)
+            time.sleep(8000)
+            driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': False})
 
             # # Switch to the other tab
             # driver.switch_to.window(driver.window_handles[0])
