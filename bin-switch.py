@@ -52,15 +52,15 @@ def main():
         while True:
             # Wait for ~100 seconds
             # time.sleep(100)
-            time.sleep(10)
-            driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': True})
+            # time.sleep(10)
+            # driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': True})
             
             # # Switch to the other tab
             # driver.switch_to.window(driver.window_handles[1])
 
             # Wait for ~100 seconds 
-            time.sleep(8000)
-            driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': False})
+            # time.sleep(8000)
+            # driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': False})
 
             # # Switch to the other tab
             # driver.switch_to.window(driver.window_handles[0])
