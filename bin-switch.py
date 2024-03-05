@@ -33,6 +33,9 @@ def main():
     # Open the window
     driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
 
+    #stahp the darn refresh PLZ
+    driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': True})
+    
     # Create New Tab
     # new_tab_link = "https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=pickleballdisplay#scrollHere"
     # driver.execute_script(f"window.open('{new_tab_link}', '_blank');")
