@@ -34,10 +34,10 @@ def main():
     driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
 
     # Create New Tab
-    new_tab_link = "https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=pickleballdisplay#scrollHere"
-    driver.execute_script(f"window.open('{new_tab_link}', '_blank');")
-    time.sleep(2)  # Give some time for the new tab to open
-    driver.switch_to.window(driver.window_handles[0])
+    # new_tab_link = "https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=pickleballdisplay#scrollHere"
+    # driver.execute_script(f"window.open('{new_tab_link}', '_blank');")
+    # time.sleep(2)  # Give some time for the new tab to open
+    # driver.switch_to.window(driver.window_handles[0])
 
     # (Test) Switch to the second tab
     # time.sleep(10)
@@ -45,25 +45,29 @@ def main():
     # time.sleep(10)
     # background(driver2)
 
-    try:
-        while True:
-            # Wait for ~100 seconds
-            time.sleep(100)
-            # time.sleep(10)
+    # try:
+    #     while True:
+    #         # Wait for ~100 seconds
+    #         # time.sleep(100)
+    #         # # time.sleep(10)
             
-            # Switch to the other tab
-            driver.switch_to.window(driver.window_handles[1])
+    #         # # Switch to the other tab
+    #         # driver.switch_to.window(driver.window_handles[1])
 
-            # Wait for ~100 seconds
-            time.sleep(100)
-            # time.sleep(10)
+    #         # Wait for ~100 seconds 
+    #         # time.sleep(100)
+    #         time.sleep(1000)
 
-            # Switch to the other tab
-            driver.switch_to.window(driver.window_handles[0])
+    #         # # Switch to the other tab
+    #         # driver.switch_to.window(driver.window_handles[0])
 
-    except KeyboardInterrupt:
-        # Close the browser when interrupted (Ctrl+C)
-        driver.quit()
+    # except KeyboardInterrupt:
+    #     # Close the browser when interrupted (Ctrl+C)
+    #     driver.quit()
+    
+    while True:{
+        
+    }
 
 if __name__ == "__main__":
     main()
