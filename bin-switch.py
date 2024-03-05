@@ -45,29 +45,29 @@ def main():
     # time.sleep(10)
     # background(driver2)
 
-    # try:
-    #     while True:
-    #         # Wait for ~100 seconds
-    #         # time.sleep(100)
-    #         # # time.sleep(10)
+    try:
+        while True:
+            # Wait for ~100 seconds
+            # time.sleep(100)
+            # # time.sleep(10)
             
-    #         # # Switch to the other tab
-    #         # driver.switch_to.window(driver.window_handles[1])
+            # # Switch to the other tab
+            # driver.switch_to.window(driver.window_handles[1])
 
-    #         # Wait for ~100 seconds 
-    #         # time.sleep(100)
-    #         time.sleep(1000)
+            # Wait for ~100 seconds 
+            # time.sleep(100)
+            driver.wait(82800)
 
-    #         # # Switch to the other tab
-    #         # driver.switch_to.window(driver.window_handles[0])
+            # # Switch to the other tab
+            # driver.switch_to.window(driver.window_handles[0])
 
-    # except KeyboardInterrupt:
-    #     # Close the browser when interrupted (Ctrl+C)
-    #     driver.quit()
+    except KeyboardInterrupt:
+        # Close the browser when interrupted (Ctrl+C)
+        driver.quit()
     
-    while True:{
-        driver.wait(82800)
-    }
+    # while True:{
+    #     driver.wait(82800)
+    # }
     driver.quit()
 
 if __name__ == "__main__":
