@@ -51,32 +51,40 @@ def main():
 
     try:
         while True:
-            # Wait for ~100 seconds
-            # time.sleep(100)
-            # driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': True})
-            
-            # # Switch to the other tab
-            # driver.switch_to.window(driver.window_handles[1])
-            
-            # Wait for ~100 seconds
-            # driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': False})
+            try:
+                # Wait for ~100 seconds
+                # time.sleep(100)
+                # driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': True})
+                
+                # # Switch to the other tab
+                # driver.switch_to.window(driver.window_handles[1])
+                
+                # Wait for ~100 seconds
+                # driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': False})
 
-            # # Switch to the other tab
-            # driver.switch_to.window(driver.window_handles[0])
+                # # Switch to the other tab
+                # driver.switch_to.window(driver.window_handles[0])
+                
+                # Test internet for failure
+                time.sleep(3600)
+                socket.create_connection(("8.8.8.8", 53), timeout=5)
             
-            # Test internet for failure
-            time.sleep(3600)
-            socket.create_connection(("8.8.8.8", 53), timeout=5)
-            
-    # Exit on internet outage. systemd will restart (hopefully)
-    except socket.error:
-        # Close the browser when interrupted (Ctrl+C)
-        driver.quit()
-    
+         # Exit on internet outage. systemd will restart (hopefully)
+            except socket.error:
+                # refresh the browser when connection drops
+                driver.refresh()
+                time.sleep(10)
+    except KeyboardInterrupt:
+        print("Hello There ;)")
+    except Exception as e:
+        print("Unexpected error (or was it): {e}")
+    finally:    
+        print("\n\n It's been an honor.")
+        driver.quit()   
     # while True:{
     #     driver.wait(82800)
     # }
-    driver.quit()
+    
 
 if __name__ == "__main__":
     main()

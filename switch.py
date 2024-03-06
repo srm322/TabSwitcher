@@ -34,10 +34,10 @@ def main():
     driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
 
     # Create New Tab
-    new_tab_link = "https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=pickleballdisplay#scrollHere"
-    driver.execute_script(f"window.open('{new_tab_link}', '_blank');")
-    time.sleep(2)  # Give some time for the new tab to open
-    driver.switch_to.window(driver.window_handles[0])
+    # new_tab_link = "https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=pickleballdisplay#scrollHere"
+    # driver.execute_script(f"window.open('{new_tab_link}', '_blank');")
+    # time.sleep(2)  # Give some time for the new tab to open
+    # driver.switch_to.window(driver.window_handles[0])
 
     # (Test) Switch to the second tab
     # time.sleep(10)
@@ -47,23 +47,40 @@ def main():
 
     try:
         while True:
-            # Wait for ~100 seconds
-            time.sleep(100)
-            # time.sleep(10)
+            try:
+                # Wait for ~100 seconds
+                # time.sleep(100)
+                # driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': True})
+                
+                # # Switch to the other tab
+                # driver.switch_to.window(driver.window_handles[1])
+                
+                # Wait for ~100 seconds
+                # driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': False})
+
+                # # Switch to the other tab
+                # driver.switch_to.window(driver.window_handles[0])
+                
+                # Test internet for failure
+                time.sleep(3600)
+                socket.create_connection(("8.8.8.8", 53), timeout=5)
             
-            # Switch to the other tab
-            driver.switch_to.window(driver.window_handles[1])
-
-            # Wait for ~100 seconds
-            time.sleep(100)
-            # time.sleep(10)
-
-            # Switch to the other tab
-            driver.switch_to.window(driver.window_handles[0])
-
+         # Exit on internet outage. systemd will restart (hopefully)
+            except socket.error:
+                # refresh the browser when connection drops
+                driver.refresh()
+                time.sleep(10)
     except KeyboardInterrupt:
-        # Close the browser when interrupted (Ctrl+C)
-        driver.quit()
-
+        print("Hello There ;)")
+    except Exception as e:
+        print("Unexpected error (or was it): {e}")
+    finally:    
+        print("\n\n It's been an honor.")
+        driver.quit()   
+    # while True:{
+    #     driver.wait(82800)
+    # }
+    
+    
 if __name__ == "__main__":
     main()
