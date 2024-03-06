@@ -75,9 +75,9 @@ def main():
                 driver.refresh()
                 time.sleep(10)
     except KeyboardInterrupt:
-        print("Hello There ;)")
+        print("\nHello There ;)")
     except Exception as e:
-        print("Unexpected error (or was it): {e}")
+        print("\nUnexpected error (or was it): {e}")
     finally:    
         print("\n\n It's been an honor.")
         driver.quit()   
