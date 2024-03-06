@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
+import socket
 
 # def background(driver):
 #     current_handle = driver.current_window_handle
@@ -52,20 +53,23 @@ def main():
         while True:
             # Wait for ~100 seconds
             # time.sleep(100)
-            time.sleep(10)
             # driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': True})
             
             # # Switch to the other tab
             # driver.switch_to.window(driver.window_handles[1])
-
-            # Wait for ~100 seconds 
-            # time.sleep(8000)
+            
+            # Wait for ~100 seconds
             # driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': False})
 
             # # Switch to the other tab
             # driver.switch_to.window(driver.window_handles[0])
-
-    except KeyboardInterrupt:
+            
+            # Test internet for failure
+            time.sleep(3600)
+            socket.create_connection(("8.8.8.8", 53), timeout=5)
+            
+    # Exit on internet outage. systemd will restart (hopefully)
+    except socket.error:
         # Close the browser when interrupted (Ctrl+C)
         driver.quit()
     
