@@ -1,0 +1,13 @@
+[Unit]
+Description=bin-switch.py
+After=network.target
+
+[Service]
+ExecStart=/home/goinfo/anaconda3/bin/python3 /home/goinfo/Desktop/TabSwitcher/bin-switch.py    # /path/to/anaconda3/bin/python /path/to/your/python/script.py
+WorkingDirectory=/home/goinfo/Desktop/TabSwitcher      # /path/to/your/python/script/directory
+Restart=always
+User=goinfo
+RestartSec=3
+
+[Install]
+WantedBy=default.target
