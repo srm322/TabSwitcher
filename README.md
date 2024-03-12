@@ -27,3 +27,6 @@ Steps for getting working from fresh
 conda env create -f env.yml
 python switch.py
 ```
+
+```
+pyinstaller --onefile --add-binary "/usr/bin/chrome:/chrome-linux64" --add-binary "/usr/bin/chrome:/chromedriver-linux64" bin-switch.py
