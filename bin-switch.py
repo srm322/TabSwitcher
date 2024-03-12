@@ -72,7 +72,8 @@ def main():
          # Exit on internet outage. systemd will restart (hopefully)
             except socket.error:
                 # refresh the browser when connection drops
-                driver.refresh()
+                # driver.refresh()
+                driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
                 time.sleep(10)
     except KeyboardInterrupt:
         print("\nHello There ;)")
