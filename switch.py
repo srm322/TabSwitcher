@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
+import socket
 
 # def background(driver):
 #     current_handle = driver.current_window_handle
@@ -68,7 +69,8 @@ def main():
          # Exit on internet outage. systemd will restart (hopefully)
             except socket.error:
                 # refresh the browser when connection drops
-                driver.refresh()
+                # driver.refresh()
+                driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
                 time.sleep(10)
     except KeyboardInterrupt:
         print("Hello There ;)")
