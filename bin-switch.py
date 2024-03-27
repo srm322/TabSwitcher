@@ -51,9 +51,9 @@ def main():
     
     try:
         while True:
-            # check for midnight for Eastern Time zone
+            # reload driver every 4 hours
             utc_time = time.gmtime()
-            if (utc_time.tm_hour == 4) and (utc_time.tm_min == 0) and (utc_time.tm_sec <= 1):
+            if (utc_time.tm_hour % 4 == 0) and (utc_time.tm_min == 0) and (utc_time.tm_sec <= 1):
                 driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
             try:
                 # Wait for ~100 seconds
