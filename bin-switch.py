@@ -48,9 +48,13 @@ def main():
     # driver.switch_to.window(driver.window_handles[1])
     # time.sleep(10)
     # background(driver2)
-
+    
     try:
         while True:
+            # reload driver every 4 hours
+            utc_time = time.gmtime()
+            if (utc_time.tm_hour % 4 == 0) and (utc_time.tm_min == 0) and (utc_time.tm_sec <= 1):
+                driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
             try:
                 # Wait for ~100 seconds
                 # time.sleep(100)
