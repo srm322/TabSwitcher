@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
 import time
 import socket
 
@@ -50,19 +51,24 @@ def main():
         while True:
             try:
                 # constant internet testing
-                socket.create_connection(("8.8.8.8", 53), timeout=5)
+                socket.create_connection(("8.8.8.8", 53), timeout=1)
                 # reload driver every 2 hours anyways (will most likely delete if working without)
                 utc_time = time.gmtime()
                 if (utc_time.tm_hour % 2 == 0) and (utc_time.tm_min == 0) and (utc_time.tm_sec <= 5):
-                    driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
+                    # driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
+                    driver.refresh()
+                    socket.close()
                     time.sleep(10) # sleeps beyond if statemen check so that driver only refreshes once.
             
          # Exit on internet outage. systemd will restart (hopefully)
             except socket.error:
-                # refresh the browser when connection drops
-                # driver.refresh()
-                driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
-                time.sleep(10)
+                # refresh the browser when connection drops // this has been really shitty...
+                # driver.find_element_by_tag_name("body").send_keys(Keys.F5)
+                driver.refresh()
+                # driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
+                time.sleep(60)
+                
+            
     except KeyboardInterrupt:
         print("Hello There ;)")
     except Exception as e:

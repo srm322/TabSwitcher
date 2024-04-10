@@ -57,12 +57,14 @@ def main():
                 # reload driver every 2 hours anyways (will most likely delete if working without)
                 utc_time = time.gmtime()
                 if (utc_time.tm_hour % 2 == 0) and (utc_time.tm_min == 0) and (utc_time.tm_sec <= 5):
-                    driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
+                    # driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
+                    driver.refresh()
                     time.sleep(10) # sleeps beyond if statemen check so that driver only refreshes once.
+            
             except socket.error:
                 # refresh the browser when connection drops
-                # driver.refresh()
-                driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
+                driver.refresh()
+                # driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
                 time.sleep(10)
     except KeyboardInterrupt:
         print("\nHello There ;)")
