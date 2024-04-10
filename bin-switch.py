@@ -52,15 +52,13 @@ def main():
     try:
         while True:
             try:
-            	# constant internet test
-            	socket.create_connection(("8.8.8.8", 53), timeout=5)
-		# reload driver every 2 hour
-		utc_time = time.gmtime()
-		if (utc_time.tm_hour % 2 == 0) and (utc_time.tm_min == 0) and (utc_time.tm_sec <= 5):
-			driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
-                	sleep(10)
-            
-         # Exit on internet outage. systemd will restart (hopefully)
+                # constant internet testing
+                socket.create_connection(("8.8.8.8", 53), timeout=5)
+                # reload driver every 2 hours anyways (will most likely delete if working without)
+                utc_time = time.gmtime()
+                if (utc_time.tm_hour % 2 == 0) and (utc_time.tm_min == 0) and (utc_time.tm_sec <= 5):
+                    driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
+                    time.sleep(10) # sleeps beyond if statemen check so that driver only refreshes once.
             except socket.error:
                 # refresh the browser when connection drops
                 # driver.refresh()
