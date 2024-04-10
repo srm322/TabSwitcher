@@ -1,6 +1,9 @@
+netGrep=$(cd /sys/class/net && echo *)
+netName=$(cut -c 4- <<< $netGrep)
+
 while true
      do
-     i=$(cat /sys/class/net/wlan1/carrier)
+	i=$(cat /sys/class/net/$netName/carrier)
 if [ $i == 1 ]
 then
        echo "connected"
@@ -10,8 +13,8 @@ else
        killall wpa_supplicant
        modprobe -rv rt2800usb
        modprobe -v rt2800usb
-       wpa_supplicant -i wlan1 -c/etc/wpa_supplicant.conf -B
-       dhclient wlan1
+       wpa_supplicant -i $netName -c/etc/wpa_supplicant.conf -B
+       dhclient $netName
        echo "reconnected successfully"
        fi
 sleep 10

@@ -51,27 +51,13 @@ def main():
     
     try:
         while True:
-            # reload driver every 4 hours
-            utc_time = time.gmtime()
-            if (utc_time.tm_hour % 4 == 0) and (utc_time.tm_min == 0) and (utc_time.tm_sec <= 1):
-                driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
             try:
-                # Wait for ~100 seconds
-                # time.sleep(100)
-                # driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': True})
-                
-                # # Switch to the other tab
-                # driver.switch_to.window(driver.window_handles[1])
-                
-                # Wait for ~100 seconds
-                # driver.execute_cdp_cmd('Emulation.setScriptExecutionDisabled', {'value': False})
-
-                # # Switch to the other tab
-                # driver.switch_to.window(driver.window_handles[0])
-                
-                # Test internet for failure
-                time.sleep(3600)
-                socket.create_connection(("8.8.8.8", 53), timeout=5)
+		# reload driver every hour and test for failure
+		utc_time = time.gmtime()
+		if (utc_time.tm_hour % 1 == 0) and (utc_time.tm_min == 0) and (utc_time.tm_sec <= 5):
+			driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
+                	socket.create_connection(("8.8.8.8", 53), timeout=5)
+                	sleep(10)
             
          # Exit on internet outage. systemd will restart (hopefully)
             except socket.error:
