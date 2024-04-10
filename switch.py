@@ -66,7 +66,7 @@ def main():
                 # driver.find_element_by_tag_name("body").send_keys(Keys.F5)
                 driver.refresh()
                 # driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
-                time.sleep(60)
+                time.sleep(15)
                 
             
     except KeyboardInterrupt:
