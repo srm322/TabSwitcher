@@ -29,4 +29,4 @@ python switch.py
 ```
 
 ```
-pyinstaller --onefile --add-binary "/usr/bin/chrome:/chrome-linux64" --add-binary "/usr/bin/chrome:/chromedriver-linux64" bin-switch.py
+pyinstaller --onefile --add-binary "/usr/bin/chrome:/chrome-linux64" --add-binary "/usr/bin/chrome:/chromedriver-linux64" bin-switch.py && cp ./dist/bin-switch ./dist/run
