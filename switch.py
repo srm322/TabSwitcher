@@ -54,10 +54,12 @@ def main():
                 socket.create_connection(("8.8.8.8", 53), timeout=1)
                 # reload driver every 2 hours anyways (will most likely delete if working without)
                 utc_time = time.gmtime()
-                driver.delete_all_cookies()
+                
                 if (utc_time.tm_hour % 2 == 0) and (utc_time.tm_min == 0) and (utc_time.tm_sec <= 5):
                     # driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
+                    driver.delete_all_cookies()
                     driver.refresh()
+                    
                     socket.close()
                     time.sleep(10) # sleeps beyond if statemen check so that driver only refreshes once.
             
@@ -74,6 +76,7 @@ def main():
         print("Hello There ;)")
     except Exception as e:
         print("Unexpected error (or was it): {e}")
+        SystemExit(3825) # for if supervise doesn't relauch the program. 
     finally:    
         print("\n\n It's been an honor.")
         driver.quit()   
