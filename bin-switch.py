@@ -35,7 +35,11 @@ try:
             utc_time = time.gmtime()
             if (utc_time.tm_hour % 2 == 0) and (utc_time.tm_min == 0) and (utc_time.tm_sec <= 5):
                 # driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
+                driver.delete_all_cookies()
                 driver.refresh()
+               
+                socket.close()
+                
                 time.sleep(10) # sleeps beyond if statemen check so that driver only refreshes once.
         
         except socket.error:
