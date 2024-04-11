@@ -44,14 +44,16 @@ try:
         
         except socket.error:
             # refresh the browser when connection drops
-            driver.refresh()
-            # driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
-            time.sleep(15)
+            driver.close()
+            driver = webdriver.Chrome(executable_path=chrome_driver_path, options=options)
+            driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
+            
                 
 except KeyboardInterrupt:
     print("\nHello There ;)")
 except Exception as e:
     print("\nUnexpected error (or was it): {e}")
+    SystemExit(3825) # for if supervise doesn't relauch the program. 
 finally:    
     print("\n\n It's been an honor.")
     driver.quit()   
