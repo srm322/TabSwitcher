@@ -30,7 +30,7 @@ try:
     while True:
         try:
             # constant internet testing
-            socket.create_connection(("8.8.8.8", 53), timeout=5)
+            socket.create_connection(("8.8.8.8", 53), timeout=2)
             # reload driver every 2 hours anyways (will most likely delete if working without)
             utc_time = time.gmtime()
             if (utc_time.tm_hour % 2 == 0) and (utc_time.tm_min == 0) and (utc_time.tm_sec <= 5):
