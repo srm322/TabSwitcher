@@ -62,5 +62,5 @@ finally:
     print("\n\n It's been an honor.")
     driver.quit()   
     
-
+# Ended up using fullpageOS since raspberry pi 3 too old n slow.
 
