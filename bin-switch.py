@@ -1,5 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+
 import time
 import socket
 
@@ -18,8 +20,10 @@ options.add_argument("--disable-infobars")  # Disable information bars
 options.binary_location = "/usr/bin/chrome/chrome-linux64/chrome"
 # ChromeDriver path var
 chrome_driver_path = "/usr/bin/chrome/chromedriver-linux64/chromedriver"
+# Set service
+service = Service(executable_path=chrome_driver_path)
 # Initialize Chrome
-driver = webdriver.Chrome(executable_path=chrome_driver_path, options=options)
+driver = webdriver.Chrome(service=service, options=options)
     
 # Open the window
 driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
@@ -45,7 +49,7 @@ try:
         except socket.error:
             # refresh the browser when connection drops
             driver.close()
-            driver = webdriver.Chrome(executable_path=chrome_driver_path, options=options)
+            driver = webdriver.Chrome(service=service, options=options)
             driver.get("https://northstar.greyoakscc.com:8443/northstar/Sports/newTeeSheet.do?activityDisplaySystem=1&stationId=sports#scrollHere")
             
                 
